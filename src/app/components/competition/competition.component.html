@@ -1,0 +1,74 @@
+<app-sidebar></app-sidebar>
+<div class="p-4 sm:ml-64">
+    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
+      <div class="relative w-9/12 overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3">
+                  ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Code
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Date
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Start Time
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  End Time
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Participants
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Location
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Amount
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  <span class="sr-only">Edit</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let competition of competitions" class="bg-white">
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                  {{ competition.id }}
+                </td>
+                <td class="px-6 py-4">
+                  {{ competition.code }}
+                </td>
+                <td class="px-6 py-4">
+                  {{ competition.date | date: 'shortDate' }}
+                </td>
+                <td class="px-6 py-4">
+                  {{ competition.startTime }}
+                </td>
+                <td class="px-6 py-4">
+                  {{ competition.endTime }}
+                </td>
+                <td class="px-6 py-4">
+                  {{ competition.numberOfParticipants }}
+                </td>
+                <td class="px-6 py-4">
+                  {{ competition.location }}
+                </td>
+                <td class="px-6 py-4">
+                  {{ competition.amount | currency }}
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </table>
+      </div>
+    </div>
+  </div>
+  
