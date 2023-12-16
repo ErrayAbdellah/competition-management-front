@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import Competition from 'src/app/models/competition';
-import { CompetitionService } from 'src/app/services/cometition/competition.service';
+import { EditCompetitionService } from 'src/app/services/cometition/edit-competition/edit-competition.service';
+import { CompetitionService } from 'src/app/services/cometition/get-competition/competition.service';
 
 @Component({
   selector: 'app-competition',
@@ -9,14 +10,21 @@ import { CompetitionService } from 'src/app/services/cometition/competition.serv
 })
 export class CompetitionComponent {
  competitions: Competition[] = [];
- constructor(private competitionService: CompetitionService){}
+ currentPage = 1;
+ itemsPerPage = 5; 
+
+ constructor(
+  private competitionService: CompetitionService,
+  private editCompetitionService:EditCompetitionService){}
 
   ngOnInit(){
     this.fetchFish();
   }
+
   fetchFish(){
-    return this.competitionService.getAllFishs().subscribe(
+    return this.competitionService.getAllCompetitions().subscribe(
       (competitions: Competition[]) => {
+        console.log(competitions);
         this.competitions = competitions;
       },
       (error: any) => {
@@ -24,4 +32,37 @@ export class CompetitionComponent {
       }
     );
   }
+  get totalPages(): number {
+    return Math.ceil(this.competitions.length / this.itemsPerPage);
+  }
+  // Method to get competitions for the current page
+  get paginatedCompetitions(): Competition[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.competitions.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+  
+  
+  // refreshCompetitions() {
+  //   this.getAllCompetitions().subscribe(competitions => {
+  //     this.competitionsSubject.next(competitions);
+  //   });
+  // }
+
+  editCompetition(competition: Competition) {
+    this.editCompetitionService.setCompetitionForEdit(competition);
+  }
+  
+  deleteCompetition(id: number) {
+    if(confirm("Are you sure to delete this competition?")) {
+      this.competitionService.deleteCompetition(id).subscribe(
+        () => {
+          this.competitions = this.competitions.filter(c => c.id !== id);
+        },
+        error => {
+          console.error('Error deleting competition', error);
+        }
+      );
+    }
+  }
+
 }

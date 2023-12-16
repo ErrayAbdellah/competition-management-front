@@ -1,74 +1,106 @@
 <app-sidebar></app-sidebar>
 <div class="p-4 sm:ml-64">
-    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
-      <div class="relative w-9/12 overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-          <table class="min-w-full divide-y divide-gray-200">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-              <tr>
-                <th scope="col" class="px-6 py-3">
-                  ID
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  Code
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  Date
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  Start Time
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  End Time
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  Participants
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  Location
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  Amount
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  <span class="sr-only">Edit</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let competition of competitions" class="bg-white">
-                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                  {{ competition.id }}
-                </td>
-                <td class="px-6 py-4">
-                  {{ competition.code }}
-                </td>
-                <td class="px-6 py-4">
-                  {{ competition.date | date: 'shortDate' }}
-                </td>
-                <td class="px-6 py-4">
-                  {{ competition.startTime }}
-                </td>
-                <td class="px-6 py-4">
-                  {{ competition.endTime }}
-                </td>
-                <td class="px-6 py-4">
-                  {{ competition.numberOfParticipants }}
-                </td>
-                <td class="px-6 py-4">
-                  {{ competition.location }}
-                </td>
-                <td class="px-6 py-4">
-                  {{ competition.amount | currency }}
-                </td>
-                <td class="px-6 py-4 text-right">
-                  <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </table>
+  <div class="p-4  rounded-lg">
+    <!-- Main Content -->
+    <div class="container mx-auto p-6">
+      <app-save-competition></app-save-competition>
+      <!-- Competitions Table -->
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-4">Competitions List</h2>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          
+            <table class="min-w-full table-auto">
+              <thead class="bg-gray-200">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    ID
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Code
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Date
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Start Time
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          End Time
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Participants
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Location
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Amount
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          <span class="sr-only">Edit</span>
+                        </th>
+                      </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                  <!-- Table rows with competition data -->
+                  <!-- Example Row -->
+                  <!-- <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">1</td> -->
+                    <tr  *ngFor="let competition of paginatedCompetitions" class="bg-white">
+                      <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900 whitespace-nowrap">
+                        {{ competition.id }}
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap">
+                        {{ competition.code }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          {{ competition.date | date: 'shortDate' }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          {{ competition.startTime }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          {{ competition.endTime }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          {{ competition.numberOfParticipants }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          {{ competition.location }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          {{ competition.amount | currency }}
+                        </td>
+                      <!-- Other data cells -->
+                      <td class="px-6 py-4 whitespace-nowrap whitespace-nowrap text-right text-sm font-medium">
+                          <a  (click)="editCompetition(competition)" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                          <a (click)="deleteCompetition(competition.id)" class="text-red-600 hover:text-red-900 ml-4">Delete</a>
+                        </td>
+                  </tr>
+                  <!-- Repeat for other competitions -->
+                </tbody>
+              </table>
+              <!-- After the table in your competition.component.html -->
+              <div class="flex justify-center items-center mt-4">
+                <button 
+                  [disabled]="currentPage === 1"
+                  (click)="currentPage = currentPage - 1"
+                  class="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed">
+                  Previous
+                </button>
+
+                <span>Page {{ currentPage }} of {{ totalPages }}</span>
+
+                <button 
+                  [disabled]="currentPage === totalPages"
+                  (click)="currentPage = currentPage + 1"
+                  class="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed">
+                  Next
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  

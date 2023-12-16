@@ -1,0 +1,55 @@
+<h1 class="text-3xl font-bold text-gray-800 mb-6">Manage Members</h1>
+<div class="mb-8">
+  <h2 class="text-xl font-semibold mb-4">Add/Edit Member</h2>
+  <form (ngSubmit)="onSubmitMember()" class="bg-white p-6 rounded-lg shadow">
+    <!-- Num -->
+    <div class="mb-4 mr-8 inline-block">
+      <label for="num" class="block text-sm font-medium text-gray-700">Num</label>
+      <input type="number" id="num" [(ngModel)]="member.num" name="num" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+    </div>
+
+    <!-- Name -->
+    <div class="mb-4 mr-8 inline-block">
+      <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+      <input type="text" id="name" [(ngModel)]="member.name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+    </div>
+
+    <!-- Family Name -->
+    <div class="mb-4 mr-8 inline-block">
+      <label for="familyName" class="block text-sm font-medium text-gray-700">Family Name</label>
+      <input type="text" id="familyName" [(ngModel)]="member.familyName" name="familyName" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+    </div>
+
+    <!-- Accession Date -->
+    <div class="mb-4 mr-8 inline-block">
+      <label for="accessionDate" class="block text-sm font-medium text-gray-700">Accession Date</label>
+      <input type="date" id="accessionDate" [(ngModel)]="member.accessionDate" name="accessionDate" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+    </div>
+
+    <!-- Nationality -->
+    <div class="mb-4 mr-8 inline-block">
+      <label for="nationality" class="block text-sm font-medium text-gray-700">Nationality</label>
+      <input type="text" id="nationality" [(ngModel)]="member.nationality" name="nationality" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+    </div>
+
+    <!-- Identity Document -->
+    <select [(ngModel)]="member.identityDocument" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+      <option selected value="khtar">khtar</option>
+      <option *ngFor="let type of identityDocumentTypes" [value]="type">
+        {{ type }}
+      </option>
+    </select>
+
+    <!-- Identity Number -->
+    <div class="mb-4 mr-8 inline-block">
+      <label for="identityNumber" class="block text-sm font-medium text-gray-700">Identity Number</label>
+      <input type="text" id="identityNumber" [(ngModel)]="member.identityNumber" name="identityNumber" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+    </div>
+
+    <!-- Submit and Clear Buttons -->
+    <div>
+      <button type="submit" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Save Member</button>
+      <button type="button" (click)="resetForm()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700">Clear</button>
+    </div>
+  </form>
+</div>
