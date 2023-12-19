@@ -24,7 +24,6 @@ export class CompetitionComponent {
   fetchFish(){
     return this.competitionService.getAllCompetitions().subscribe(
       (competitions: Competition[]) => {
-        console.log(competitions);
         this.competitions = competitions;
       },
       (error: any) => {

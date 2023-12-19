@@ -42,10 +42,6 @@
                       </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-                  <!-- Table rows with competition data -->
-                  <!-- Example Row -->
-                  <!-- <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">1</td> -->
                     <tr  *ngFor="let competition of paginatedCompetitions" class="bg-white">
                       <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900 whitespace-nowrap">
                         {{ competition.id }}
@@ -71,16 +67,13 @@
                         <td class="px-6 py-4 whitespace-nowrap">
                           {{ competition.amount | currency }}
                         </td>
-                      <!-- Other data cells -->
                       <td class="px-6 py-4 whitespace-nowrap whitespace-nowrap text-right text-sm font-medium">
                           <a  (click)="editCompetition(competition)" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                           <a (click)="deleteCompetition(competition.id)" class="text-red-600 hover:text-red-900 ml-4">Delete</a>
                         </td>
                   </tr>
-                  <!-- Repeat for other competitions -->
                 </tbody>
               </table>
-              <!-- After the table in your competition.component.html -->
               <div class="flex justify-center items-center mt-4">
                 <button 
                   [disabled]="currentPage === 1"

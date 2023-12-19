@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+
+<!-- Upcoming Competitions Section -->
+<div *ngIf="hasUpcomingCompetitions()">
+  <h2 class="text-2xl font-semibold text-blue-600 mb-4">Upcoming Competitions</h2>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <ng-container *ngFor="let competition of competitions">
+      <div *ngIf="isUpcoming(competition)" class="bg-white p-4 rounded-lg shadow hover:shadow-lg">
+        <h3 class="font-semibold mb-2">{{ competition.code }}</h3>
+        <p>Date: {{ competition.date | date: 'shortDate' }}</p>
+        <p>Location: {{ competition.location }}</p>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Past Competitions Section -->
+<div *ngIf="hasPastCompetitions()">
+  <h2 class="text-2xl font-semibold text-blue-600 mb-4">Past Competitions</h2>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <ng-container *ngFor="let competition of competitions">
+      <div *ngIf="!isUpcoming(competition)" class="bg-white p-4 rounded-lg shadow hover:shadow-lg">
+        <h3 class="font-semibold mb-2">{{ competition.code }}</h3>
+        <p>Date: {{ competition.date | date: 'shortDate' }}</p>
+        <p>Location: {{ competition.location }}</p>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -17,7 +17,6 @@ export class SaveMemberComponent {
   constructor(private saveService: SaveMemberService) {}
 
   ngOnInit() {
-    // Fetch members or set up for edit mode
   }
 
   setEditMode(member: Member) {
@@ -25,16 +24,28 @@ export class SaveMemberComponent {
     this.editMode = true;
   }
 
+ 
   onSubmitMember() {
     if (this.editMode) {
-      // Update member
       this.saveService.updateMember(this.member).subscribe(
-        // ...
+        response => {
+            console.log('Member updated', response);
+            this.resetForm();
+          },
+          error => {
+            console.error('Error updating competition', error);
+          }
       );
     } else {
-      // Save new member
+      
       this.saveService.saveMember(this.member).subscribe(
-        // ...
+        response => {
+          console.log('Member updated', response);
+          this.resetForm();
+        },
+        error => {
+          console.error('Error updating competition', error);
+        }
       );
     }
   }
@@ -43,6 +54,4 @@ export class SaveMemberComponent {
     this.member = new Member();
     this.editMode = false;
   }
-
-  // Other methods as needed
 }

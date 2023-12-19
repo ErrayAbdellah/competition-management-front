@@ -11,6 +11,11 @@ import { CompetitionComponent } from './components/competition/competition.compo
 import { SaveCompetitionComponent } from './components/save-competition/save-competition.component';
 import { FormsModule } from '@angular/forms';
 import { SaveMemberComponent } from './components/save-member/save-member.component';
+import { NavbarComponent } from './components/front/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
+import { HomeCompetitionComponent } from './components/home-competition/home-competition.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { HuntingComponent } from './components/hunting/hunting.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +26,11 @@ import { SaveMemberComponent } from './components/save-member/save-member.compon
     CompetitionComponent,
     SaveCompetitionComponent,
     SaveMemberComponent,
+    NavbarComponent,
+    HomeComponent,
+    HomeCompetitionComponent,
+    RegistrationComponent,
+    HuntingComponent,
   ],
   imports: [
     BrowserModule,

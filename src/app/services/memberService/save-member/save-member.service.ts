@@ -13,7 +13,6 @@ export class SaveMemberService {
   constructor(private http: HttpClient) {}
 
   saveMember(member: Member): Observable<Member> {
-    console.log(member);
     return this.http.post<Member>(this.apiUrl, member);
   }
 

@@ -1,26 +1,16 @@
-import Competition from "./competition";
 import { Fish } from "./fish";
 import { Member } from "./member";
 
 export class Hunting {
-    id: number;
+  id: number;
   numberOfFish: number;
   fish: Fish; 
-  member: Member; 
-  competition: Competition;
+  memberCode: Member; 
+  competitionId: number;
 
-  constructor(
-    id: number,
-    numberOfFish: number,
-    fish: Fish,
-    member: Member,
-    competition: Competition
-  ) {
-    this.id = id;
-    this.numberOfFish = numberOfFish;
-    this.fish = fish;
-    this.member = member;
-    this.competition = competition;
+  constructor(init?: Partial<Hunting>) {
+    Object.assign(this, init);
+    this.fish = new Fish();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
   }
 
 }

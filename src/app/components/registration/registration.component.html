@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<section class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Competition Registration</h1>
+    
+    <form (ngSubmit)="registerMember()" class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow">
+        <!-- Member ID Field -->
+        <div class="mb-4">
+        <label for="memberId" class="block text-sm font-medium text-gray-700">Member ID</label>
+        <input type="text" id="memberId" [(ngModel)]="memberId" name="memberId" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" required>
+        </div>
+    
+        <!-- Competition Field -->
+        <div class="mb-4">
+        <label for="competitionId" class="block text-sm font-medium text-gray-700">Competition</label>
+        <select id="competitionId" [(ngModel)]="selectedCompetitionId" name="competitionId" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm" required>
+            <option *ngFor="let competition of competitions" [value]="competition.id">{{ competition.code }}</option>
+        </select>
+        </div>
+    
+        <!-- Submit Button -->
+        <div class="mt-6">
+        <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-700">Register</button>
+        </div>
+    </form>
+</section>
+      
