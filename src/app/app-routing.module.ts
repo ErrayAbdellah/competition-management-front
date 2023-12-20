@@ -7,6 +7,7 @@ import { HomeCompetitionComponent } from './components/home-competition/home-com
 import { HomeComponent } from './components/home/home.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HuntingComponent } from './components/hunting/hunting.component';
+import { HomeResultComponent } from './components/home-result/home-result.component';
 
 const routes: Routes = [
   { path:"member" , component : MemberComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path:"competition" , component : CompetitionComponent },
   { path:"home-competition" , component : HomeCompetitionComponent },
   { path:"hunting" , component : HuntingComponent },
+  { path:"result" , component : HomeResultComponent },
   { path:"" , component : HomeComponent },
   { path:"registration" , component : RegistrationComponent },
 ];

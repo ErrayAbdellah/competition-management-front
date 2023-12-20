@@ -34,7 +34,6 @@ export class HuntingComponent {
     return this.competitionService.getAllCompetitions().subscribe(
       (competitions: Competition[]) => {
         this.competitions = competitions;
-        console.log(this.competitions)
       },
       (error: any) => {
         console.log('Error fetching fishs :',error);

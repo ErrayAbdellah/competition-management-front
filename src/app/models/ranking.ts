@@ -2,6 +2,10 @@ import Competition from "./competition";
 import { Member } from "./member";
 
 export class Ranking {
+    id:{
+      memberId:number
+      competitionId:number;
+    }
     rank: number;
     score: number;
     member: Member; // Assuming you have a Member model

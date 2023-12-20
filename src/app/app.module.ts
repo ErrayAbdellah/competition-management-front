@@ -16,6 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HomeCompetitionComponent } from './components/home-competition/home-competition.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HuntingComponent } from './components/hunting/hunting.component';
+import { HomeResultComponent } from './components/home-result/home-result.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HuntingComponent } from './components/hunting/hunting.component';
     HomeCompetitionComponent,
     RegistrationComponent,
     HuntingComponent,
+    HomeResultComponent,
   ],
   imports: [
     BrowserModule,
