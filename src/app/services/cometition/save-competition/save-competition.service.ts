@@ -18,6 +18,6 @@ export class SaveCompetitionService {
 
   updateCompetition(competition: Competition): Observable<Competition> {
     const url = `${this.apiUrl}/${competition.id}`;
-    return this.http.put<Competition>(url, competition);
+    return this.http.put<Competition>(url, competition,{ responseType: 'text' as 'json' });
   }
 }
