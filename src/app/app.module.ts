@@ -17,6 +17,7 @@ import { HomeCompetitionComponent } from './components/home-competition/home-com
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HuntingComponent } from './components/hunting/hunting.component';
 import { HomeResultComponent } from './components/home-result/home-result.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { HomeResultComponent } from './components/home-result/home-result.compon
     RegistrationComponent,
     HuntingComponent,
     HomeResultComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
