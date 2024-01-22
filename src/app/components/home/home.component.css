@@ -1,0 +1,24 @@
+   /* Add a background image to the entire page */
+   body {
+    background-image: url('https://cdn.vectorstock.com/i/1000x1000/74/17/fisherman-on-pier-seascape-and-hills-background-vector-26457417.webp'); /* Update with the path to your image */
+    background-size: cover; /* Cover the entire page */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Fix the position of the image */
+}
+
+/* Style for the welcome banner with a specific background */
+.welcome-banner {
+    background-image: url('https://cdn.vectorstock.com/i/1000x1000/74/17/fisherman-on-pier-seascape-and-hills-background-vector-26457417.webp'); /* Update with the path to your image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white; /* Ensure text is readable on your image */
+}
+
+/* General styles for other elements */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+}
+
+/* ... include other styles here ... */
