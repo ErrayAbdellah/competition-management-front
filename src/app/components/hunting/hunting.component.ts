@@ -22,7 +22,7 @@ export class HuntingComponent {
     this.hunting.competitionId = this.selectedCompetitionId ;
     this.huntingService.huntingFish(this.hunting).subscribe({
       next: (response) => console.log(response),
-      error: (error) => console.error(error)
+      error: (error) => console.error(error.details)
     });
   }
   ngOnInit(): void {
@@ -36,7 +36,7 @@ export class HuntingComponent {
         this.competitions = competitions;
       },
       (error: any) => {
-        console.log('Error fetching fishs :',error);
+        console.log('Error fetching fishs :',error.details);
       }
     );
   }
