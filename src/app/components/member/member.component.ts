@@ -12,6 +12,7 @@ export class MemberComponent {
   members: Member[] = [];
   currentPage = 1;
  itemsPerPage = 5; 
+ 
 
   constructor(
     private memberService: MemberService,
