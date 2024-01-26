@@ -14,6 +14,8 @@ export class SaveCompetitionComponent {
   competition: Competition = new Competition();
   editMode = false;
   competitions: Competition[] = [];
+  errorMessage: string = '';
+
 
   // constructor(private saveCompetitionService: SaveCompetitionService, private competitionService: CompetitionService) {
     
@@ -40,7 +42,7 @@ export class SaveCompetitionComponent {
     
   onSubmit() {
     if (this.editMode) {
-      // Call service to update competition
+      
       this.saveCompetitionService.updateCompetition(this.competition).subscribe(
         response => {
           console.log('Competition updated', response);
@@ -51,16 +53,17 @@ export class SaveCompetitionComponent {
         }
       );
     } else {
-      // Call service to add new competition
-      this.saveCompetitionService.saveCompetition(this.competition).subscribe(
-        response => {
-          console.log('Competition saved', response);
+      
+      this.saveCompetitionService.saveCompetition(this.competition).subscribe({
+        next: (responseText) => {
+          console.log('Competition saved:', responseText);
           this.resetForm();
         },
-        error => {
-          console.error('Error saving competition', error);
+        error: (error) => {
+          console.error('Error saving competition:', error.error.message);
+          this.resetForm();
         }
-      );
+      });
     }
   }
 
