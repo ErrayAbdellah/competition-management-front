@@ -5,9 +5,9 @@
             <a routerLink="" class="hover:bg-blue-700 px-3 py-2 rounded">Home</a>
             <a routerLink="/home-competition" class="hover:bg-blue-700 px-3 py-2 rounded">Competitions</a>
             <a routerLink="/registration" class="hover:bg-blue-700 px-3 py-2 rounded">Registration</a>
-            <a routerLink="/hunting" class="hover:bg-blue-700 px-3 py-2 rounded">Hunting</a>
+            <a *ngIf="hasAuthorityManager()" routerLink="/hunting" class="hover:bg-blue-700 px-3 py-2 rounded">Hunting</a>
             <a routerLink="/result" class="hover:bg-blue-700 px-3 py-2 rounded">Results</a>
-            <a routerLink="/competition" class="hover:bg-blue-700 px-3 py-2 rounded">Admin</a>
+            <a *ngIf="hasAuthorityManager()" routerLink="/competition" class="hover:bg-blue-700 px-3 py-2 rounded">Admin</a>
         </div>
     </div>
 </nav>

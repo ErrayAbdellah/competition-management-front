@@ -8,16 +8,25 @@ import { HomeComponent } from './components/home/home.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HuntingComponent } from './components/hunting/hunting.component';
 import { HomeResultComponent } from './components/home-result/home-result.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { authGuard } from './_guards/auth.guard';
+import { roleMemberGuard } from './_guards/member.guard';
+import { JuryGuard } from './_guards/jury.guard';
 
 const routes: Routes = [
-  { path:"member" , component : MemberComponent },
-  { path:"fish" , component : FishComponent },
-  { path:"competition" , component : CompetitionComponent },
-  { path:"home-competition" , component : HomeCompetitionComponent },
-  { path:"hunting" , component : HuntingComponent },
-  { path:"result" , component : HomeResultComponent },
-  { path:"" , component : HomeComponent },
-  { path:"registration" , component : RegistrationComponent },
+  { path: '', redirectTo: 'test', pathMatch: 'full'},
+  { path:"member" , component : MemberComponent ,canActivate: [authGuard,JuryGuard]},
+  { path:"fish" , component : FishComponent ,canActivate: [authGuard,JuryGuard]},
+  { path:"competition" , component : CompetitionComponent ,canActivate: [authGuard,JuryGuard]},
+  { path:"home-competition" , component : HomeCompetitionComponent ,canActivate: [authGuard, roleMemberGuard]},
+  { path:"result" , component : HomeResultComponent ,canActivate: [authGuard, roleMemberGuard]},
+  { path:"hunting" , component : HuntingComponent,canActivate: [authGuard,JuryGuard]},
+  { path:"registration" , component : RegistrationComponent ,canActivate: [authGuard,roleMemberGuard]},
+  { path:"" , component : HomeComponent ,canActivate: [authGuard,]},
+  { path: "register",component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  
 ];
 
 @NgModule({

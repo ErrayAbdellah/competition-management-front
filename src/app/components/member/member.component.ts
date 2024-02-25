@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Member } from 'src/app/models/member';
 import { EditMemberService } from 'src/app/services/memberService/edit-member/edit-member.service';
 import { MemberService } from 'src/app/services/memberService/member/member.service';
+import { RoleManagementService } from 'src/app/services/role-management.service';
 
 @Component({
   selector: 'app-member',
@@ -12,11 +13,13 @@ export class MemberComponent {
   members: Member[] = [];
   currentPage = 1;
  itemsPerPage = 5; 
+ selectedRole: string;
  
 
   constructor(
     private memberService: MemberService,
-    private editMemberService: EditMemberService) {}
+    private editMemberService: EditMemberService,
+    private roleManagementService: RoleManagementService) {}
 
   ngOnInit(): void {
     this.fetchMembers();
@@ -58,6 +61,23 @@ export class MemberComponent {
         }
       );
     }
+  }
+
+  changeMemberRole(memberId: number, newRole: string) {
+    console.log("id : "+memberId);
+    console.log("new role : "+newRole);
+
+    // this.roleManagementService.updateMemberRole(memberId, newRole)
+    //   .subscribe(
+    //     () => {
+    //       console.log(`Role updated successfully for member with ID ${memberId}`);
+    //       // You can handle success actions here
+    //     },
+    //     (error) => {
+    //       console.error('Error updating member role:', error);
+    //       // Handle error actions here
+    //     }
+    //   );
   }
 
 }

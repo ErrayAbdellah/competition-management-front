@@ -1,6 +1,3 @@
-import { Hunting } from "./hunting";
-import { Ranking } from "./ranking";
-
 export default class Competition {
   id: number;
   code: string;

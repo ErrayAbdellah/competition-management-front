@@ -1,0 +1,143 @@
+<!-- auth.component.html -->
+
+<section *ngIf="!isLoggedIn">
+    <div class="w-full lg:max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow-xl m-auto mt-56">
+      <h2 class="text-2xl font-bold text-gray-900">
+        Sign in to Flowbite
+      </h2>
+      <form 
+            
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate
+        >
+        <div>
+          <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900">Your Last first name</label>
+          <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+            type="text"
+            name="firstName"
+            [(ngModel)]="register.firstName"
+            required
+            #firstName="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+          >
+        </div>
+        <div>
+          <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900">Your last name</label>
+          <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+            type="text"
+            name="lastName"
+            [(ngModel)]="register.lastName"
+            required
+            #lastName="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && lastName.errors }"
+          >
+        </div>
+        <div>
+          <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+          <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="aaaaaa@emil.com"
+            type="email"
+            name="email"
+            [(ngModel)]="register.email"
+            required
+            #email="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+          >
+        </div>
+        <div>
+          <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Your password</label>
+          <input placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required
+            type="password"
+            name="password"
+            [(ngModel)]="register.password"
+            required
+            minlength="6"
+            #password="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+          >
+        </div>
+        <div class="flex items-start">
+          <div class="flex items-center h-5">
+            <input id="remember" ngModel name="remember" type="checkbox" class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300">
+          </div>
+          <div class="ms-3 text-sm">
+            <label for="remember" class="font-medium text-gray-500">Remember this device</label>
+          </div>
+          <a href="#" class="ms-auto text-sm font-medium text-blue-600 hover:underline">Lost Password?</a>
+        </div>
+        <button type="submit"   class="w-full px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto">Login to your account</button>
+        <div class="text-sm font-medium text-gray-900">
+          Not registered yet? <a class="text-blue-600 hover:underline">Create account</a>
+        </div>
+      </form>
+    </div>
+  </section>
+  
+
+<!-- <div class="col-md-12">
+    <div class="card card-container">
+      <img
+        id="profile-img"
+        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        class="profile-img-card"
+      />
+      <form
+        *ngIf="!isLoggedIn"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="email">email</label>
+          <input
+            type="text"
+            class="form-control"
+            name="email"
+            [(ngModel)]="form.email"
+            required
+            #email="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+          />
+          <div *ngIf="email.errors && f.submitted" class="invalid-feedback">
+            email is required!
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="6"
+            #password="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+          />
+          <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+            <div *ngIf="password.errors['required']">Password is required</div>
+            <div *ngIf="password.errors['minlength']">
+              Password must be at least 6 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">
+            Login
+          </button>
+        </div>
+        <div class="form-group">
+          <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+            Login failed: {{ errorMessage }}
+          </div>
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isLoggedIn">
+        Logged in as {{ roles }}.
+      </div>
+    </div> 
+  </div>-->
+

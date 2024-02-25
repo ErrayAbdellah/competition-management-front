@@ -7,8 +7,10 @@ export class Member {
     familyName: string;
     accessionDate: Date;
     nationality: string;
+    role:string;
     identityDocument: IdentityDocumentType;
     identityNumber: string;
+    
     constructor(init?: Partial<Member>) {
       Object.assign(this, init);
     }
